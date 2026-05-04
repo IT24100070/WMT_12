@@ -11,6 +11,7 @@ async function main() {
   try {
     await mongoose.connect(config.mongoUri, { serverSelectionTimeoutMS: 5000 });
     dbConnected = true;
+    console.log("MongoDB connected successfully.");
     await bootstrapData();
   } catch (err) {
     console.error("MongoDB connection failed; starting API without DB.");
