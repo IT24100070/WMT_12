@@ -9,7 +9,7 @@ const app = createApp();
 async function main() {
   let dbConnected = false;
   try {
-    await mongoose.connect(config.mongoUri, { serverSelectionTimeoutMS: 8000 });
+    await mongoose.connect(config.mongoUri, { serverSelectionTimeoutMS: 5000 });
     dbConnected = true;
     await bootstrapData();
   } catch (err) {
