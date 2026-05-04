@@ -27,7 +27,7 @@ function resolveBaseUrl() {
   if (Platform.OS === 'android') {
     return `http://10.0.2.2:${port}/api`;
   }
-  return `http://192.168.1.3:${port}/api`;
+  return `https://wmt12-production.up.railway.app/api`;
 }
 
 const BASE_URL = resolveBaseUrl();
