@@ -1,17 +1,14 @@
 import axios from 'axios';
-import { Platform } from 'react-native';
 
 /**
- * API base URL (must include `/api` — backend mounts routes under /api).
+ * API base URL — always points to the deployed Railway backend.
  *
- * After deploying the backend, set EXPO_PUBLIC_API_URL in `.env`:
- *   EXPO_PUBLIC_API_URL=https://your-backend.up.railway.app/api
- *
- * Defaults (when EXPO_PUBLIC_API_URL is unset):
- *   - Web:             localhost:5000/api
- *   - Android emulator: 10.0.2.2:5000/api
- *   - iOS / native:    192.168.1.3:5000/api  (LAN IP)
+ * Override for local development by setting in frontend/.env:
+ *   EXPO_PUBLIC_API_URL=http://YOUR_LAN_IP:5000/api
+ * Then restart Expo with: npx expo start -c
  */
+const PRODUCTION_URL = 'https://wmt12-production.up.railway.app/api';
+
 function resolveBaseUrl() {
   const fromEnv =
     typeof process !== 'undefined' && process.env?.EXPO_PUBLIC_API_URL
@@ -20,15 +17,10 @@ function resolveBaseUrl() {
   if (fromEnv) {
     return fromEnv.endsWith('/api') ? fromEnv : `${fromEnv}/api`;
   }
-  const port = process.env.EXPO_PUBLIC_API_PORT || '5000';
-  if (Platform.OS === 'web') {
-    return `http://localhost:${port}/api`;
-  }
-  if (Platform.OS === 'android') {
-    return `http://10.0.2.2:${port}/api`;
-  }
-  return `https://wmt12-production.up.railway.app/api`;
+  // Default: always use Railway for all platforms (web, android, ios)
+  return PRODUCTION_URL;
 }
+
 
 const BASE_URL = resolveBaseUrl();
 
