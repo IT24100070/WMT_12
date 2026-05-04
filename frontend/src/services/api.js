@@ -7,7 +7,7 @@ import axios from 'axios';
  *   EXPO_PUBLIC_API_URL=http://YOUR_LAN_IP:5000/api
  * Then restart Expo with: npx expo start -c
  */
-const PRODUCTION_URL = 'https://wmt12-production.up.railway.app/api';
+const PRODUCTION_URL = 'https://wmt-12.onrender.com/api';
 
 function resolveBaseUrl() {
   const fromEnv =
