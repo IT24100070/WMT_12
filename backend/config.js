@@ -7,6 +7,6 @@ function envString(name, fallback) {
 export const config = {
   port: Number(envString("PORT", "5000")) || 5000,
   publicHost: envString("PUBLIC_HOST", "wmt12-production.up.railway.app"),
-  mongoUri: envString("MONGODB_URI", "mongodb+srv://admin1:admin1@cluster1.fdxvjk4.mongodb.net/?appName=Cluster1"),
+  mongoUri: envString("MONGODB_URI", "mongodb://admin1:admin2@ac-dmptdng-shard-00-00.fdxvjk4.mongodb.net:27017,ac-dmptdng-shard-00-01.fdxvjk4.mongodb.net:27017,ac-dmptdng-shard-00-02.fdxvjk4.mongodb.net:27017/?ssl=true&replicaSet=atlas-qpwkek-shard-0&authSource=admin&appName=Cluster1"),
   jwtSecret: envString("JWT_SECRET", "wmt-hotel-jwt-secret-change-before-production"),
 };
